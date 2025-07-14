@@ -77,6 +77,36 @@ $ bash _updatePublisher.sh
 $ bash _genonce.sh
 ```
 
+### Dockerの場合
+Dockerコンテナ内で[環境作成](docs/environment.md)の環境を自動構築し、IGのコンパイルまで行ないます。<br/> 
+実行にはDockerのインストールが必要です。<br/>
+入手先: https://docs.docker.com/get-started/get-docker/<br/>
+
+``` sh
+#実行ディレクトリに移動
+$ cd (プロジェクトディレクトリ移動)
+
+# (初回のみ実行)gitクローン
+$ git clone http://github.com/jami-fhir-jp-wg/jp-core-v1x.git
+
+# git 最新化
+$ cd jp-core-v1x
+$ git fetch
+$ git pull
+
+#Dockerディレクトリに移動
+$ cd docker
+
+# (初回のみ実行)Dockerコンテナの起動＋IGPublisherの実行
+$ docker compose up
+
+# (二回目以降の実行)IGPublisherの実行
+$ docker compose start
+
+# (削除時のみ実行)Dockerコンテナの削除
+$ docker compose down
+```
+
 ## FSH & Markdown記載ルール
 * [FHIR Shorthand記載ルール](docs/fishingrule.md)
 * [プロファイル説明用Markdown記載ルール](docs/template_intronotes.md)
